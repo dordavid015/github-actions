@@ -16,7 +16,9 @@ jobs:
               cat README.md
 
       - name: Generate ASCII artwork
-        run: ../scripts/my-shell-script.sh
-
+        run: |
+              chmod +x ../scripts/my-shell-script.sh
+              ../scripts/my-shell-script.sh
+              
       - name: List repo files
         run: ls -ltra
