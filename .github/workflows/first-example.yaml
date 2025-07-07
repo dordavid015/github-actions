@@ -1,4 +1,4 @@
-namr: My First workflow
+name: My First workflow
 on:
   push
 
