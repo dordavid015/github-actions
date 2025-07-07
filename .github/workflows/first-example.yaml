@@ -17,8 +17,8 @@ jobs:
 
       - name: Generate ASCII artwork
         run: |
-              chmod +x ../scripts/my-shell-script.sh
-              ../scripts/my-shell-script.sh
-              
+              chmod +x /scripts/my-shell-script.sh
+              ./scripts/my-shell-script.sh
+
       - name: List repo files
         run: ls -ltra
