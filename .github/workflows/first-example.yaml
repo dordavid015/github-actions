@@ -12,7 +12,13 @@ jobs:
       - name: Run a one-line script
         run: echo "Hello, World!"
 
-      - name: Run a multi-line script
+      - name: ls
+        run: ls -la
+
+      - name: cat readme
+        run: cat README.md
+
+      - name: Run a multi-line script 
         run: |
           echo "This is a multi-line script"
           echo "It can contain multiple commands"
