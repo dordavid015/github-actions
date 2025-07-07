@@ -9,16 +9,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run a one-line script
-        run: echo "Hello, World!"
-
-      - name: ls
-        run: ls -la
-
-      - name: cat readme
-        run: cat README.md
-
-      - name: Run a multi-line script 
+      - name: Run a 3-lines script
         run: |
-          echo "This is a multi-line script"
-          echo "It can contain multiple commands"
+              echo "Hello, World!"
+              ls -ltra
+              cat README.md
+
+      - name: Generate ASCII artwork
+        run: |
+              sudo apt-get install cowsay -y
+              cowsay -f dragon "Run for cover, i am a DRAGON ... RAWR" >> dragon.txt
+              grep -i "dragon" dragon.txt
+              cat dragon.txt
+              
+      - name: List repo files
+        run: ls -ltra
