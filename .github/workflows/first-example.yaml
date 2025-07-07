@@ -37,7 +37,7 @@ jobs:
           name: dragon-artifact
 
       - name: Sleep for 10 seconds
-        run: sleep 
+        run: sleep 2
 
       - name: Test if dragon.txt contains "dragon"
         run: grep -i "dragon" dragon.txt
