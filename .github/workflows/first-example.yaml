@@ -8,17 +8,40 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Install COWSAY CMD
+        run: sudo apt-get install cowsay -y
 
-      - name: Run a 3-lines script
+      - name: Execute Cowsay command
         run: |
-              echo "Hello, World!"
-              ls -ltra
-              cat README.md
+          chmod +x scripts/my-shell-script.sh
+          ./scripts/my-shell-script.sh
 
-      - name: Generate ASCII artwork
-        run: |
-              chmod +x scripts/my-shell-script.sh
-              ./scripts/my-shell-script.sh
+      - name: Sleep for 30 seconds
+        run: sleep 30
 
-      - name: List repo files
-        run: ls -ltra
+  test_job:
+    runs-on: ubuntu-latest
+    needs: first_job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Sleep for 10 seconds
+        run: sleep 10
+
+      - name: Test if dragon.txt contains "dragon"
+        run: grep -i "dragon" dragon.txt
+
+  deploy_job:
+    runs-on: ubuntu-latest
+    needs: test_job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cat file
+        run: cat dragon.txt
+
+      - name: Deploy
+        run: echo "Deploying to production..."
